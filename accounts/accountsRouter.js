@@ -72,7 +72,7 @@ router.delete("/:id", (req,res)=>{
     .where({id})
     .del()
     .then((account)=>{
-        res.status(200).json(account)
+        res.status(200).json(`account with id of ${id} has been removed`)
     })
     .catch((error)=>{
         res.status(500).json({message: error.message})
