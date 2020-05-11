@@ -51,8 +51,33 @@ router.post("/", (req,res)=>{
     })
 })
 
+//PUT -updates an account by id
+router.put("/:id", (req,res)=>{
+    const { id } = req.params;
+    db("accounts")
+    .where({id})
+    .update(req.body)
+    .then((account)=>{
+        res.status(200).json({account})
+    })
+    .catch(error=>{
+        res.status(500).json({message: error.message})
+    })
+})
 
-
+//DELETE - deletes an account by id
+router.delete("/:id", (req,res)=>{
+    const {id} = params.id;
+    db("accounts")
+    .where({id})
+    .del()
+    .then((account)=>{
+        res.status(200).json(`account with id of ${id} has been removed`, account)
+    })
+    .catch((error)=>{
+        res.status(500).json({message: error.message})
+    })
+})
 
 
 
